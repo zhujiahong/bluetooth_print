@@ -203,7 +203,7 @@
         if([@"text" isEqualToString:type]){
             [command addPrintMode: [weight intValue] ==0?0:0|8|16|32];
             [command addText:content];
-            [command addPrintMode: 0];
+//            [command addPrintMode: 0];
         }else if([@"barcode" isEqualToString:type]){
             [command addSetBarcodeWidth:2];
             [command addSetBarcodeHeight:60];
@@ -225,8 +225,10 @@
         }
        
     }
-    
-    [command addPrintAndFeedLines:4];
+    Byte byte[] = {0x1D,'\f'};
+    NSData *adata = [[NSData alloc] initWithBytes:byte length:2];
+    [command addNSDataToCommand:adata];
+//    [command addPrintAndFeedLines:4];
     return [command getCommand];
 }
 
