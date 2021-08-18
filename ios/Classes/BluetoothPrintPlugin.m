@@ -183,7 +183,7 @@
     
     EscCommand *command = [[EscCommand alloc]init];
     [command addInitializePrinter];
-    [command addPrintAndFeedLines:3];
+    
 
     for(NSDictionary *m in list){
         
