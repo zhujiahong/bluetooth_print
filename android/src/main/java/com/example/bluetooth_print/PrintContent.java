@@ -55,11 +55,13 @@ public class PrintContent {
                         esc.addSelectPrintingPositionForHRICharacters(EscCommand.HRI_POSITION.BELOW);
                         // 设置条码可识别字符位置在条码下方
                         // 设置条码高度为60点
-                        esc.addSetBarcodeHeight((byte) 60);
+                        if (size == 1){esc.addSetBarcodeHeight((byte) 40);}else {esc.addSetBarcodeHeight((byte) 100);}
+
                         // 设置条码宽窄比为2
                         esc.addSetBarcodeWidth((byte) 2);
                         // 打印Code128码
-                        esc.addCODE128(esc.genCodeB(content));
+                        esc.addCODE128(content);
+//                        esc.addEAN13(content);
                   }else if("qrcode".equals(type)){
                         // 设置纠错等级
                         esc.addSelectErrorCorrectionLevelForQRCode((byte) 0x31);
@@ -90,7 +92,10 @@ public class PrintContent {
 //            //开启切刀
 //            esc.addCutPaper();
             //添加缓冲区打印完成查询
-            byte [] bytes={0x1D,'\f'};
+//            byte [] bytes={0x1d,0x54,0x1d,0x28,0x46,0x04,0,0x03,0};
+//            //添加用户指令
+//            esc.addUserCommand(bytes);
+            byte [] bytes={0x1d,'\f'};
             //添加用户指令
             esc.addUserCommand(bytes);
 
