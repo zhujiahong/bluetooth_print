@@ -55,7 +55,7 @@ public class PrintContent {
                         esc.addSelectPrintingPositionForHRICharacters(EscCommand.HRI_POSITION.BELOW);
                         // 设置条码可识别字符位置在条码下方
                         // 设置条码高度为60点
-                        if (size == 1){esc.addSetBarcodeHeight((byte) 40);}else {esc.addSetBarcodeHeight((byte) 100);}
+                        if (size == 1){esc.addSetBarcodeHeight((byte) 35);}else {esc.addSetBarcodeHeight((byte) 100);}
 
                         // 设置条码宽窄比为2
                         esc.addSetBarcodeWidth((byte) 2);
